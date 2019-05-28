@@ -1,0 +1,70 @@
+% Cover letter using letter.sty
+\documentclass{letter} % Uses 10pt
+\usepackage{hyperref}
+%Use \documentstyle[newcent]{letter} for New Century Schoolbook postscript font
+% the following commands control the margins:
+\topmargin=-1in    % Make letterhead start about 1 inch from top of page 
+\textheight=8in  % text height can be bigger for a longer letter
+\oddsidemargin=0pt % leftmargin is 1 inch
+\textwidth=6.5in   % textwidth of 6.5in leaves 1 inch for right margin
+
+\begin{document}
+
+\signature{Dana A. Merrick}           % name for signature 
+\longindentation=0pt                       % needed to get closing flush left
+\let\raggedleft\raggedright                % needed to get date flush left
+ 
+ 
+\begin{letter}{Second Dinner \\
+Irvine, CA 92618}
+
+
+\begin{flushleft}
+{\large\bf Dana A. Merrick}
+\end{flushleft}
+\medskip\hrule height 1pt
+\begin{flushright}
+\hfill dana.merrick@gmail.com \\
+\hfill (978) 206-1331
+\end{flushright} 
+%\vfill % forces letterhead to top of page
+
+ 
+\opening{Dear Second Dinner:} 
+ 
+\noindent I have updated my resume twice in the last year: once back in July on the day Second Dinner was announced, and again today in preparation for this application. Simply put, I can't remember the last time I have been this excited about a project.
+
+\noindent Who am I? I'm an experienced infrastructure engineer who has worked with many small/medium teams as they grew to successful companies. I have a history of architecting infrastructures that are simple, reliable, affordable, and scalable. I also have something uncommon in my field... social skills! I enjoy working with non-technical teams, interacting with customers, and I am always pleased to find opportunities to share my knowledge with the engineering team.
+
+\noindent When I wrote to you back in July, I was on sabbatical; I had taken a year off to travel the USA in a campervan. I have since settled back into Real Life, but I'm keeping the vanlife dream alive with a Twitch channel (available at \href{http://whereisdana.today}{whereisdana.today}). If you stop in, be sure to interact with my custom bot (source code available on my GitHub).
+
+\noindent I appreciate your time in considering me for this role. Please do not hesitate reach out if you have any questions!
+
+ 
+\closing{Sincerely yours,} 
+
+
+\vfill
+
+\begin{itemize}
+	\item \href{https://github.com/dmerrick/resume}{https://github.com/dmerrick/resume}
+	\item \href{https://www.linkedin.com/in/danamerrick}{https://www.linkedin.com/in/danamerrick}
+	\item \href{https://dana.lol}{https://dana.lol}
+	\item \href{http://whereisdana.today}{http://whereisdana.today}
+\end{itemize}
+
+
+
+
+% \encl{}  				% Enclosures
+
+\end{letter}
+ 
+
+\end{document}
+
+
+
+
+
+
