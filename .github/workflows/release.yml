@@ -16,3 +16,8 @@ jobs:
       with:
         root_file: |
           resume.tex
+    #TODO: is there a way to make only the most recent version available?
+    # - name: Upload PDF file
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     path: resume.pdf
