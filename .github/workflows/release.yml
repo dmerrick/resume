@@ -4,18 +4,50 @@ on:
   push:
     branches:
       - master
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#       with:
+#         fetch-depth: '0'
+#     - uses: xu-cheng/latex-action@v3
+#       with:
+#         root_file: |
+#           resume.tex
+#     - uses: actions/upload-artifact@v4
+#       with:
+#         name: resume
+#         path: resume.pdf
+permissions:
+  contents: read
+
+env:
+  WORDLIST: .github/spellcheck/allow.txt
+
 jobs:
-  build:
+  checks:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: '0'
-    - uses: xu-cheng/latex-action@v3
-      with:
-        root_file: |
-          resume.tex
-    - uses: actions/upload-artifact@v4
-      with:
-        name: resume
-        path: resume.pdf
+      - uses: actions/checkout@v4
+
+      - name: Spell check (aspell)
+        env: 
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aspell aspell-en
+          mkdir -p "$(dirname "$WORDLIST")"
+          touch "$WORDLIST"
+          aspell --mode=tex --lang=en_US --personal="$WORDLIST" --list < resume.tex \
+            | sort -u | tee misspellings.txt
+          if [ -s misspellings.txt ]; then
+            echo "Misspellings found:"
+            cat misspellings.txt
+            exit 1
+          fi
+
+      - name: LaTeX lint (chktex)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chktex
+          chktex -q -n1 -n3 -n8 resume.tex
