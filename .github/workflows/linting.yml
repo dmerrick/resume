@@ -24,7 +24,7 @@ jobs:
           sudo apt-get install -y aspell aspell-en
           mkdir -p "$(dirname "$WORDLIST")"
           touch "$WORDLIST"
-          aspell --mode=tex --lang=en_US --personal="$WORDLIST" --list < resume.tex \
+          aspell --mode=tex --lang=en_US --ignore-case --personal="$WORDLIST" --list < resume.tex \
             | sort -u | tee misspellings.txt
           if [ -s misspellings.txt ]; then
             echo "Misspellings found:"
