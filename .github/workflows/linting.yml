@@ -31,7 +31,8 @@ jobs:
       #       cat misspellings.txt
       #       exit 1
       #     fi
-            - name: Spell check (aspell)
+      
+      - name: Spell check (aspell)
         run: |
           set -euo pipefail
           sudo apt-get update
