@@ -44,6 +44,7 @@ jobs:
           # Generate misspellings
           aspell --mode=tex --lang=en_US --ignore-case --list < resume.tex \
             | tr '[:upper:]' '[:lower:]' \
+            | sed "s/'s$//" \
             | sort -u > misspellings.txt
 
           # Normalize allowlist and subtract it
