@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - dam/add-linting
 
 permissions:
   contents: read
