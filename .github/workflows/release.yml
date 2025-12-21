@@ -5,21 +5,7 @@ on:
     branches:
       - master
       - dam/adding-linting
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v2
-#       with:
-#         fetch-depth: '0'
-#     - uses: xu-cheng/latex-action@v3
-#       with:
-#         root_file: |
-#           resume.tex
-#     - uses: actions/upload-artifact@v4
-#       with:
-#         name: resume
-#         path: resume.pdf
+
 permissions:
   contents: read
 
@@ -27,6 +13,20 @@ env:
   WORDLIST: .github/spellcheck/allow.txt
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - uses: xu-cheng/latex-action@v3
+      with:
+        root_file: |
+          resume.tex
+    - uses: actions/upload-artifact@v4
+      with:
+        name: resume
+        path: resume.pdf
   checks:
     runs-on: ubuntu-latest
     steps:
@@ -52,3 +52,4 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y chktex
           chktex -q -n1 -n3 -n8 resume.tex
+
