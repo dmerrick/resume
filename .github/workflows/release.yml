@@ -1,8 +1,8 @@
-name: Build
+name: Build Resume
 on:
+  pull_request:
   push:
     branches:
-      - add-automation #TODO: remove this
       - master
 jobs:
   build:
@@ -15,11 +15,6 @@ jobs:
       with:
         root_file: |
           resume.tex
-    #TODO: is there a way to make only the most recent version available?
-    # - name: Upload PDF file
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     path: resume.pdf
     - uses: actions/upload-artifact@v4
       with:
         name: resume
