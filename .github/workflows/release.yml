@@ -1,0 +1,21 @@
+name: Build Resume
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - uses: xu-cheng/latex-action@v3
+      with:
+        root_file: |
+          resume.tex
+    - uses: actions/upload-artifact@v4
+      with:
+        name: resume
+        path: resume.pdf
