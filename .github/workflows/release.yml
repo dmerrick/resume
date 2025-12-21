@@ -2,8 +2,7 @@ name: Build
 on:
   push:
     branches:
-      #TODO: remove this
-      - add-automation
+      - add-automation #TODO: remove this
       - master
 jobs:
   build:
