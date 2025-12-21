@@ -18,19 +18,46 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Spell check (aspell)
+      # - name: Spell check (aspell)
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y aspell aspell-en
+      #     mkdir -p "$(dirname "$WORDLIST")"
+      #     touch "$WORDLIST"
+      #     aspell --mode=tex --lang=en_US --ignore-case --personal="$WORDLIST" --list < resume.tex \
+      #       | sort -u > misspellings.txt
+      #     if [ -s misspellings.txt ]; then
+      #       echo "Misspellings found:"
+      #       cat misspellings.txt
+      #       exit 1
+      #     fi
+            - name: Spell check (aspell)
         run: |
+          set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y aspell aspell-en
-          mkdir -p "$(dirname "$WORDLIST")"
-          touch "$WORDLIST"
-          aspell --mode=tex --lang=en_US --ignore-case --personal="$WORDLIST" --list < resume.tex \
-            | sort -u | tee misspellings.txt
-          if [ -s misspellings.txt ]; then
-            echo "Misspellings found:"
-            cat misspellings.txt
+
+          # Fail fast if allowlist isn't actually in the repo
+          test -f "$WORDLIST" || (echo "Missing $WORDLIST (did you commit it?)" && exit 1)
+
+          # Generate misspellings
+          aspell --mode=tex --lang=en_US --ignore-case --list < resume.tex \
+            | tr '[:upper:]' '[:lower:]' \
+            | sort -u > misspellings.txt
+
+          # Normalize allowlist and subtract it
+          tr '[:upper:]' '[:lower:]' < "$WORDLIST" \
+            | sed '/^\s*#/d;/^\s*$/d' \
+            | sort -u > allow.normalized.txt
+
+          comm -23 misspellings.txt allow.normalized.txt > misspellings.filtered.txt
+
+          if [ -s misspellings.filtered.txt ]; then
+            echo "Misspellings found (after allowlist):"
+            cat misspellings.filtered.txt
             exit 1
           fi
+
 
       - name: LaTeX lint (chktex)
         run: |
