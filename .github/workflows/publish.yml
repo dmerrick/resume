@@ -1,0 +1,38 @@
+name: Publish Resume PDF
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date for the PDF filename (YYYY-MM-DD). Defaults to today.'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: xu-cheng/latex-action@v3
+      with:
+        root_file: resume.tex
+    - name: Replace PDF
+      run: |
+        DATE="${{ inputs.date }}"
+        if [ -z "$DATE" ]; then
+          DATE=$(date +%Y-%m-%d)
+        fi
+        git rm resume.*.pdf
+        mv resume.pdf "resume.${DATE}.pdf"
+        git add "resume.${DATE}.pdf"
+    - name: Commit and push
+      run: |
+        DATE="${{ inputs.date }}"
+        if [ -z "$DATE" ]; then
+          DATE=$(date +%Y-%m-%d)
+        fi
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git commit -m "Publish resume.${DATE}.pdf"
+        git push
