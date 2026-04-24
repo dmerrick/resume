@@ -12,26 +12,27 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      DATE: ${{ inputs.date }}
     steps:
     - uses: actions/checkout@v4
     - uses: xu-cheng/latex-action@v3
       with:
         root_file: resume.tex
-    - name: Replace PDF
+    - name: Set date
       run: |
-        DATE="${{ inputs.date }}"
         if [ -z "$DATE" ]; then
-          DATE=$(date +%Y-%m-%d)
+          echo "DATE=$(date +%Y-%m-%d)" >> "$GITHUB_ENV"
         fi
+    - name: Replace PDF and update README
+      run: |
         git rm resume.*.pdf
         mv resume.pdf "resume.${DATE}.pdf"
         git add "resume.${DATE}.pdf"
+        sed -i "s|resume\.[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\.pdf|resume.${DATE}.pdf|g" README.md
+        git add README.md
     - name: Commit and push
       run: |
-        DATE="${{ inputs.date }}"
-        if [ -z "$DATE" ]; then
-          DATE=$(date +%Y-%m-%d)
-        fi
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git commit -m "Publish resume.${DATE}.pdf"
