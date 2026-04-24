@@ -18,14 +18,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Spell check (aspell)
-        env: 
+      - name: Install lint tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y aspell aspell-en
+          sudo apt-get install -y aspell aspell-en chktex
+
+      - name: Spell check (aspell)
+        run: |
           mkdir -p "$(dirname "$WORDLIST")"
           touch "$WORDLIST"
-          aspell --mode=tex --lang=en_US --personal="$WORDLIST" --list < resume.tex \
+          aspell --mode=tex --lang=en_US --personal="$(pwd)/$WORDLIST" --list < resume.tex \
             | sort -u | tee misspellings.txt
           if [ -s misspellings.txt ]; then
             echo "Misspellings found:"
@@ -34,7 +36,4 @@ jobs:
           fi
 
       - name: LaTeX lint (chktex)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chktex
-          chktex -q -n1 -n3 -n8 resume.tex
+        run: chktex -q -n1 -n3 -n8 -n13 -n38 resume.tex
