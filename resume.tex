@@ -58,14 +58,25 @@
   \end{itemize}
   
 \section{EXPERIENCE}
-  \textsl{Senior Infrastructure Engineer}  \hfill 2020-present \\
+  \textsl{Principal DevOps Engineer}  \hfill 2024-25 \\
+  Ginkgo Bioworks,
+  Boston, MA
+  \begin{itemize}  \itemsep -2pt % reduce space between items
+    \item Built an external-facing ML model serving platform end-to-end on GKE, including API gateway, auto-scaling, GPU metrics, and OpenTelemetry tracing.
+    \item Designed multi-tenant Kubernetes infrastructure serving 6+ teams with isolated namespaces, service accounts, and data access controls.
+    \item Stood up new GKE platforms from scratch across multiple GCP projects using Terraform and Tanka/Jsonnet-based GitOps.
+    \item Built self-service developer tooling including Streamlit apps for VM management and Packer-based image pipelines with GitLab CI.
+  \end{itemize}
+
+  \textsl{Senior Infrastructure Engineer}  \hfill 2020-24 \\
   Reverie Labs,
   Cambridge, MA
   \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Facilitated large-scale machine learning workflows on AWS Batch and Kubernetes, including tools such as Prometheus, Grafana, and Traefik.
-    \item Transitioned the engineering org from a single ``click-ops'' AWS account to a multi-account system using Terraform.
-    \item Built out and maintained a self-hosted CI/CD pipeline using GitHub Actions.
-    \item Supported a multi-disciplinary team that included medicinal chemists, machine learning engineers, and data scientists.
+    \item Sole infrastructure engineer owning the company's entire AWS cloud platform, built from the first commit.
+    \item Managed EKS clusters through 10 Kubernetes version upgrades, deploying services such as MLflow, Argo Workflows, JupyterHub, and Prometheus/Grafana.
+    \item Facilitated large-scale ML workflows on GPU compute (AWS Batch, Kubernetes) for computational drug discovery in partnership with Roche.
+    \item Built CI/CD pipeline on GitHub Actions with ChatOps deployment, nightly test suites, and multi-image Docker builds for scientific computing tools.
+    \item Transitioned the engineering org from a single AWS account to a multi-account Terraform-managed system.
   \end{itemize}
 
   \textsl{Senior Engineer}  \hfill 2019-20 \\
