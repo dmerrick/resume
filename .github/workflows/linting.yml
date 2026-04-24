@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p "$(dirname "$WORDLIST")"
           touch "$WORDLIST"
-          aspell --mode=tex --lang=en_US --personal="$WORDLIST" --list < resume.tex \
+          aspell --mode=tex --lang=en_US --personal="$(pwd)/$WORDLIST" --list < resume.tex \
             | sort -u | tee misspellings.txt
           if [ -s misspellings.txt ]; then
             echo "Misspellings found:"
