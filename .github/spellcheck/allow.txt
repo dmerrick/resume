@@ -1,4 +1,4 @@
-personal_ws-1.1 en 35
+personal_ws-1.1 en 51
 APIs
 Architected
 Atchley
@@ -6,19 +6,30 @@ BCM
 Backchannelmedia
 Bedford
 Berkshelf
+Bioworks
 Brightcove
 Brightcove's
+ChatOps
 CloudFormation
 CloudWatch
+DevOps
+EKS
 Foodcritic
 GCP
+GKE
+GitLab
+GitOps
 Github
 Grafana
 IFTTT
+Jsonnet
+JupyterHub
 Kubernetes
 LaTeX
+MLflow
 Nagios
 OpsWorks
+OpenTelemetry
 PagerDuty
 Pingdom
 Postgres
@@ -28,11 +39,16 @@ Resque
 Riak
 SCM
 Snapdocs
+Streamlit
+Tanka
 Terraform
 Traefik
+VM
 Wieck
+YC
 Zencoder
 codebase
+namespaces
 scalable
 transcoding
 webhooks
