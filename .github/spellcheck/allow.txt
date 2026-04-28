@@ -1,4 +1,4 @@
-personal_ws-1.1 en 51
+personal_ws-1.1 en 52
 APIs
 Architected
 Atchley
@@ -9,6 +9,7 @@ Berkshelf
 Bioworks
 Brightcove
 Brightcove's
+CLI
 ChatOps
 CloudFormation
 CloudWatch
