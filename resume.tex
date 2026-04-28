@@ -39,33 +39,44 @@
 % LaTeX resume using res.cls
 \documentclass[line,margin]{res}
 \usepackage[T1]{fontenc}
+\usepackage{xcolor}
 
 \begin{document}
 
 \name{Dana Atchley Merrick}
 \address{\makebox[3in][r]{dana.merrick@gmail.com}}
-\address{\makebox[3in][r]{USA-based -- 978.206.1331}}
+\address{\makebox[3in][r]{linkedin.com/in/danamerrick}}
 
 \begin{resume}
 
 \section{HIGHLIGHTS}
   \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Technology generalist
-    \item Detail-oriented \& level-headed
-    \item Motivated problem solver
-    \item Superb communication skills
-    \item Experience in many industries
+    \item Technology generalist with deep understanding of full stack
+    \item Detail-oriented, level-headed, and motivated problem solver
+    \item Approachable engineer with whom colleagues genuinely enjoy working
+    \item Track record as first infra hire, inheriting homegrown infra \& modernizing it
   \end{itemize}
   
 \section{EXPERIENCE}
-  \textsl{Senior Infrastructure Engineer}  \hfill 2020-present \\
-  Reverie Labs,
-  Cambridge, MA
+  \textsl{Principal DevOps Engineer}  \hfill 2024-25 \\
+  Ginkgo Bioworks {\scriptsize\textsf{(YC S14)}},
+  Boston, MA
   \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Facilitated large-scale machine learning workflows on AWS Batch and Kubernetes, including tools such as Prometheus, Grafana, and Traefik.
-    \item Transitioned the engineering org from a single ``click-ops'' AWS account to a multi-account system using Terraform.
-    \item Built out and maintained a self-hosted CI/CD pipeline using GitHub Actions.
-    \item Supported a multi-disciplinary team that included medicinal chemists, machine learning engineers, and data scientists.
+    \item Spearheaded company-wide migration from AWS to GCP, building greenfield GCP infrastructure with cross-cloud connectivity to existing AWS systems.
+    \item Built an external-facing ML model serving platform end-to-end on GKE, including API gateway, auto-scaling, GPU metrics, and OpenTelemetry tracing.
+    \item Designed multi-tenant Kubernetes infrastructure serving 6+ teams with isolated namespaces, service accounts, and data access controls.
+    \item Stood up GKE platforms from scratch across multiple GCP projects using Terraform and Tanka/Jsonnet-based GitOps.
+    \item Developed self-service developer tooling including Streamlit apps for VM management, CLI tools, and pipelines with GitLab CI.
+  \end{itemize}
+
+  \textsl{Senior Infrastructure Engineer}  \hfill 2020-24 \\
+  Reverie Labs {\scriptsize\textsf{(YC W18)}},
+  Cambridge, MA (acquired by Ginkgo)
+  \begin{itemize}  \itemsep -2pt % reduce space between items
+    \item Joined as the company's first infrastructure engineer, inheriting a single manually-managed AWS account and building it into a multi-account, Terraform-managed platform.
+    \item Managed EKS clusters through 10 Kubernetes version upgrades, deploying services such as MLflow, Argo Workflows, JupyterHub, and Prometheus/Grafana.
+    \item Facilitated large-scale ML workflows on GPU compute (AWS Batch, Kubernetes) for computational drug discovery in partnership with Roche.
+    \item Built CI/CD pipeline on GitHub Actions with ChatOps deployment, nightly test suites, and multi-image Docker builds for scientific computing tools.
   \end{itemize}
 
   \textsl{Senior Engineer}  \hfill 2019-20 \\
@@ -73,19 +84,18 @@
   San Francisco, CA
   \begin{itemize}  \itemsep -2pt % reduce space between items
     \item Led infrastructure efforts for Postmates' ``delivery as a service'' developer API.
-    \item Built server functionality in Go -- including adding metrics, logging, tracing, and new features.
+    \item Implemented server functionality in Go -- including adding metrics, logging, tracing, and new features.
     \item Worked on build process and deploy pipeline using Docker and Kubernetes.
     \item Served as liaison between developer API team and the greater Postmates infrastructure team.
-    \item Was selected to spearhead the company-wide initiative to migrate cloud providers from AWS to GCP.
-    \item Architected a highly-scalable webhooks infrastructure that delivers millions of webhooks a day.
+    \item Selected to lead the company-wide migration from AWS to GCP.
   \end{itemize}
 
   \textsl{Senior Infrastructure Engineer}  \hfill 2016-18 \\
-  Snapdocs,
+  Snapdocs {\scriptsize\textsf{(YC W14)}},
   San Francisco, CA
   \begin{itemize}  \itemsep -2pt % reduce space between items
     \item Full ownership of the infrastructure: security, performance, reliability, cost, architecture, testing, tooling, documentation, and more.
-    \item Built a suite of internal tools to assist with development, testing, deployment, and administration.
+    \item Created a suite of internal tools to assist with development, testing, deployment, and administration.
     \item Migrated from AWS OpsWorks to Elastic Beanstalk using CloudFormation.
     \item Oversaw a SOC 2 audit.
     \item Served as a mentor/educator to entire engineering team.
@@ -95,11 +105,11 @@
   Plaid,
   San Francisco, CA
   \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Built out a Vagrant developer environment that utilized the same Chef infrastructure code as the production environment.
+    \item Designed a Vagrant developer environment that utilized the same Chef infrastructure code as the production environment.
     \item Designed and implemented a system to run integration testing suite against every pull request, catching many bugs before they were deployed.
     \item Created a GitHub Enterprise server and migrated all private repositories/users.
     \item Moved a manually-maintained Nagios alerting system to one fully automated with Chef.
-    \item Built countless internal tools to assist with development, testing, and deployment.
+    \item Developed countless internal tools to assist with development, testing, and deployment.
     \item Upgraded massive production MongoDB server cluster to the latest version with zero downtime.
   \end{itemize}
 
@@ -107,67 +117,26 @@
   IFTTT,
   San Francisco, CA
   \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Worked as sole infrastructure engineer responsible for servers on AWS and Heroku.
-    \item Managed a sophisticated job queuing system using Resque/Redis, which directed tremendous amounts of API traffic across nearly 200 different APIs.
-    \item Updated Chef infrastructure to most recent version and best practices.
-    \item Cleaned up the codebase and the infrastructure from cruft, outdated/broken tools, and unnecessary costs.
-    \item Countless improvements to monitoring and alerting tools, including PagerDuty, Pingdom, New Relic, Graphite, and CloudWatch.
+    \item Sole infrastructure engineer responsible for servers on AWS and Heroku.
+    \item Managed a sophisticated job queuing system using Resque/Redis, directing API traffic across nearly 200 different APIs.
     \item Improved stability of deploy process; reduced the total deploy time by 50\%.
-    \item Dramatically reduced the frequency of incidents requiring human intervention.
-    \item Contributed to many other areas of the company, including product design, marketing, community/support, and HQ operations.
-    \item Prepared for and oversaw the system during the launch of the Do apps -- the company's biggest launch to date. It involved eight new apps, global press coverage, and millions of new users.
+    \item Prepared for and oversaw the system during the launch of the Do apps -- the company's biggest launch to date, involving global press coverage and millions of new users.
   \end{itemize}
 
   \textsl{Platform Engineer}  \hfill 2011-14 \\
-  Brightcove / Zencoder,
+  Brightcove / Zencoder {\scriptsize\textsf{(YC W10)}},
   San Francisco, CA
   \begin{itemize}  \itemsep -2pt % reduce space between items
     \item Led the team responsible for replacing Brightcove's transcoding stack with Zencoder infrastructure.
-    \item Helped design, build, and support a platform for cross-platform mobile development.
-    \item Managed build farm, Postgres/MongoDB databases, Riak servers, Nagios systems, and Resque queues.
-    \item Migrated the AWS infrastructure to both Vagrant and physical servers.
-    \item Personally handled many long-term operations projects:
-
-    \vspace{-2.5mm} % reduce the space before the list
-    \begin{itemize}  \itemsep -3pt % reduce space between items
-      \item Built a development environment to run the AWS infrastructure code locally using Chef and Vagrant.
-      \item Automated building of machine images using Packer.
-      \item Modernized the Chef infrastructure using tools like Berkshelf and Foodcritic.
-      \item Upgraded Ruby from Ruby Enterprise 1.8.7 to Ruby 2.1.
-    \end{itemize}
-  \end{itemize}
-
-  \textsl{Software Engineer}  \hfill 2010-11 \\
-  BCM (formerly Backchannelmedia),
-  Boston, MA
-  \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Led a small team of Ruby developers in designing, building, and launching a Rails 3 daily deal site.
-    \item Personally handled entire Rails deploy and release management process using Engine Yard, Heroku, and AWS.
-    \item Earned a reputation as the resident Git expert; provided lessons, presentations, and advice on getting the most out of SCM in day-to-day development.
-  \end{itemize}
-
-  \textsl{Web Software Developer}  \hfill 2009 \\
-  Wieck Media,
-  Dallas, TX
-  \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Pure Ruby development; contributing to the company's in-house web framework (and Rails alternative), called ``Harbor.''
-    \item Designed and developed libraries (gems) for user, media, and release management, including a heavy focus on i18n for an international client.
-  \end{itemize}
-
-  \textsl{System Administrator}  \hfill 2006-09 \\
-  Integrated Computer Solutions,
-  Bedford, MA
-  \begin{itemize}  \itemsep -2pt % reduce space between items
-    \item Managed all physical machines, including production servers, personal work stations, virtual machines, and legacy hardware.
-    \item Designed and built a custom server-monitoring system.
+    \item Maintained build farm, Postgres/MongoDB databases, Riak servers, Nagios systems, and Resque queues.
+    \item Automated machine image builds with Packer and modernized Chef infrastructure.
   \end{itemize}
 
 \section{EDUCATION}
   \textsl{Trinity College,}
   Hartford, CT \hfill 2010 \\
   Bachelor of Science, Double Major \\
-  Computer Science \& Classical Mathematics \\
-  Charter member: Hartford area Ruby group
+  Computer Science \& Classical Mathematics
 
 \section{PORTFOLIO}
   My GitHub account has many public repositories for you to browse. \\
@@ -175,9 +144,9 @@
   You may find it at \texttt{github.com/dmerrick}.
 
 \section{LOOKING FOR}
-  Opportunity to be rewarded for innovation and leadership. \\
-  Camaraderie in an exceptional team. \\
-  Adoption of modern technologies.
+  Early-stage teams solving hard problems in interesting domains. \\
+  A culture of trust, ownership, and room to build. \\
+  Meaningful work where engineering effort translates to real-world impact.
 
 \section{REFERENCES}
   Available upon request.

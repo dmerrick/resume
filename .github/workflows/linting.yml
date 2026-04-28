@@ -32,6 +32,8 @@ jobs:
           if [ -s misspellings.txt ]; then
             echo "Misspellings found:"
             cat misspellings.txt
+            echo ""
+            echo "To add a word to the allowlist, add it to $WORDLIST (one word per line, sorted alphabetically)."
             exit 1
           fi
 
