@@ -26,7 +26,7 @@ jobs:
         path: resume.pdf
     - name: Comment on PR with PDF link
       if: github.event_name == 'pull_request'
-      uses: actions/github-script@v8
+      uses: actions/github-script@v9
       with:
         script: |
           const url = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}#artifacts`;
