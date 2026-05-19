@@ -15,7 +15,7 @@ jobs:
     env:
       DATE: ${{ inputs.date }}
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - uses: xu-cheng/latex-action@v3
       with:
         root_file: resume.tex
