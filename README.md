@@ -2,7 +2,7 @@
 
 [Click here](https://github.com/dmerrick/resume/raw/master/resume.2026-04-28.pdf) to download my resume as a PDF.
 
-Thank you for taking a look.  
+Thank you for taking a look.
 If you like it, I'd love it if you'd star this repo.
 
 -Dana
